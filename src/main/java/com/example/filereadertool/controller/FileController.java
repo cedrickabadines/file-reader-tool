@@ -31,6 +31,11 @@ public class FileController {
         return "static/uploadPage";
     }
 
+    @GetMapping("/success")
+    public String showSuccessPage() {
+        return "static/success";
+    }
+
     @PostMapping("/upload")
     public String uploadFiles(@RequestParam("files") MultipartFile[] files, Model model) {
         List<String> successFiles = new ArrayList<>();
@@ -107,7 +112,7 @@ public class FileController {
     public String process() {
         final File folder = new File("C:/Users/Ced/Documents/Springboot/FileReader/input");
         listFilesForFolder(folder);
-        return "redirect:/success";
+        return "redirect:/file/success";
     }
 
     // Read All Files in a Folder
