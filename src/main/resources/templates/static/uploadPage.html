@@ -41,19 +41,8 @@
             </div>
             <div class="card-body">
 
-                <form action="#"  method="post">
-                    <div class="form-row">
-<!--                    th:object="${userData}" th:action="@{/}" -->
-                        <div class="name" style="padding-right: 20px;"> Current Directory:  <div>asdjaklsdjlkasjdasdlkjaljsklkajsdasdlkjaslkdjasljklaskj </div></div>
-                        <div class="value">
-<!--                            th:field="*{userInput}"-->
-                            <input type="text" class="form-control" id="userInput" placeholder="Change local input folder">
-                            <br>
-                            <button type="submit" class="btn btn-primary">Change Directory</button>
-                        </div>
-                    </div>
-                </form>
 
+<!--                Upload Multiple Files-->
                 <form action="#" enctype="multipart/form-data" method="POST" th:action="@{/file/upload}">
                     <div class="form-row">
                         <div class="name">Upload Input File/s</div>
@@ -77,39 +66,28 @@
                 </form>
 
 
-                <!--                <form action="#" enctype="multipart/form-data" method="POST" th:action="@{/file/upload}">-->
-<!--                    <div class="form-row">-->
-<!--                        <div class="name">Upload Input File/s</div>-->
-<!--                        <div class="value">-->
-<!--                            <div>-->
-<!--                                <p th:if="${success}" th:text="${success}"></p>-->
-<!--                                <p th:if="${error}">Upload Failed</p>-->
-<!--                            </div>-->
-<!--                            <div class="input-group js-input-file">-->
-<!--                                <input class="input-file" type="file" name="file" id="file">-->
-<!--                                <label class="label&#45;&#45;file" for="file">Choose file</label>-->
-<!--&lt;!&ndash;                                <span class="input-file__info">No file chosen</span>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <div class="label&#45;&#45;desc">Upload .txt, .csv & .sql File</div>-->
-<!--                            <div><button type="submit" class="btn btn-success">Upload Input File</button></div>-->
-<!--                        </div>-->
-<!--                        <div th:if="${error}">-->
-<!--                            <p th:text="${error}" style="color: red;">ERROR :(</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-
+                <form action="#" enctype="multipart/form-data" method="POST" th:action="@{/file/upload/repo}">
                     <div class="form-row">
                         <div class="name">Upload Repo File</div>
                         <div class="value">
-                            <div class="input-group js-input-file">
-<!--                                <input class="input-file" type="file" name="file_cv" id="file">-->
-<!--                                <label class="label&#45;&#45;file" for="file">Choose file</label>-->
-                                <span class="input-file__info">No file chosen</span>
+                            <div>
+                                <p th:if="${repoSuccess}" th:text="${repoSuccess}"></p>
+                                <p th:if="${repoError}" style="color: red;" th:utext="${repoError}">Upload Failed</p>
                             </div>
-<!--                            <div class="label&#45;&#45;desc">Upload Text File. Max file size 50 MB</div>-->
+                            <div class="input-group js-input-file">
+                                <input class="input-file" type="file" name="file" id="file">
+                                <label class="label--file" for="file">Choose file</label>
+                                <!--                                <span class="input-file__info">No file chosen</span>-->
+                            </div>
+                            <div class="label--desc">Upload .txt, .csv & .sql files only</div>
+                            <div><button type="submit" class="btn btn-success">Upload Repo File</button></div>
                         </div>
+                        <!--                        <div th:if="${error}">-->
+                        <!--                            <p th:utext="${error}" style="color: red;">ERROR :(</p>-->
+                        <!--                        </div>-->
                     </div>
+                </form>
+
 
             </div>
             <div class="card-footer">
