@@ -91,7 +91,9 @@
 
             </div>
             <div class="card-footer">
-                <button class="btn btn--radius-2 btn--blue-2" type="submit">Process</button>
+                <form th:action="@{/file/process}" method="POST">
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Process</button>
+                </form>
             </div>
         </div>
     </div>
