@@ -91,7 +91,7 @@ public class FileController {
         String originalName = file.getOriginalFilename();
         try {
             File dest = new File(UPLOAD_REPO_DIR + "/" + originalName);
-            if (isValidFileExtension(originalName)) {
+            if (isValidFileExtension(getRepoFileExtension(originalName))) {
                 file.transferTo(dest);
                 model.addAttribute("repoSuccess", "Upload Successful \n" + originalName);
                 return "/static/uploadPage";
@@ -100,12 +100,20 @@ public class FileController {
                 return "/static/uploadPage";
             }
         } catch (IOException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
             // Handle the error appropriately.
             model.addAttribute("repoError", "Invalid file extension for file: " + originalName + ". Supported extensions: .docx, .csv, .txt, .sql");
             return "/static/uploadPage";
         }
 //        return "redirect:/file/uploadPage";
+    }
+
+    private String getRepoFileExtension(String filename) {
+        int dotIndex = filename.lastIndexOf('.');
+        if (dotIndex > 0 && dotIndex < filename.length() - 1) {
+            return filename.substring(dotIndex + 1);
+        }
+        return "";
     }
 
     @PostMapping("/process")
